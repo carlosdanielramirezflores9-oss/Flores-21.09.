@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>💛 Feliz 21 de septiembre</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  background:linear-gradient(160deg,#fff8c7,#ffe66d,#fff3a3);
+  color:#5a4300;
+}
+.card{
+  width:min(88%,520px); padding:34px 24px; text-align:center;
+  background:rgba(255,255,255,.78); border-radius:28px;
+  box-shadow:0 15px 50px rgba(120,90,0,.18);
+  backdrop-filter:blur(7px); z-index:2;
+}
+h1{margin:0 0 12px;font-size:clamp(30px,8vw,52px)}
+p{font-size:20px;line-height:1.5;margin:10px 0}
+.secret{
+  margin-top:22px; border:0; border-radius:999px; padding:12px 20px;
+  background:#f5c400;color:#fff;font-size:16px;cursor:pointer;
+}
+#msg{display:none;margin-top:18px;font-weight:700}
+.flower{
+  position:fixed; top:-70px; z-index:1; pointer-events:none;
+  animation:fall linear forwards;
+}
+@keyframes fall{
+  0%{transform:translateY(-80px) rotate(0deg);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(115vh) rotate(520deg);opacity:.95}
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🌼 Feliz 21 de septiembre 🌼</h1>
+  <p>Que hoy te sobren motivos para sonreír<br>y que este día te deje un recuerdo bonito. 💛</p>
+  <button class="secret" onclick="document.getElementById('msg').style.display='block'">
+    💛🎗️ Hay algo secreto...
+  </button>
+  <div id="msg">Gracias por quedarte 💛🎗️</div>
+</div>
+
+<script>
+const flowers=["🌼","🌻","💛","🌼","🌻"];
+function flower(){
+  const f=document.createElement("div");
+  f.className="flower";
+  f.textContent=flowers[Math.floor(Math.random()*flowers.length)];
+  f.style.left=Math.random()*100+"vw";
+  f.style.fontSize=(20+Math.random()*25)+"px";
+  f.style.animationDuration=(5+Math.random()*6)+"s";
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),12000);
+}
+setInterval(flower,350);
+for(let i=0;i<18;i++) setTimeout(flower,i*120);
+</script>
+</body>
+</html>
